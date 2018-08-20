@@ -1,0 +1,43 @@
+@font-face { font-family: Mario; src: url('./prstartk.ttf'); }
+
+body {
+    font-family: 'Helvetica';
+    font-weight: bold;
+    background-color: black;
+    color: black;
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-size: 150%;
+}
+
+tr td {
+  width:25%;
+}
+
+.stats{
+  font-style: italic;
+}
+
+.selectable{
+  border-color: #FFFF0099;
+  border-style: solid;
+  border-width:0;
+  border-top-width:2px;
+  border-bottom-width:2px;
+  background-color: black;
+}
+
+.selectable.selected{
+  border-color: #FFFF00;
+  border-width:0;
+  border-top-width:2px;
+  border-bottom-width:2px;
+  background-color: #DDDD0099;
+}
+
+.selectable img{
+  width:50%;
+  display:block;
+  margin:auto;
+}
