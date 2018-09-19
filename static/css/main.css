@@ -15,6 +15,11 @@ tr td {
   width:25%;
 }
 
+.bars div{
+    -webkit-transition: width 0.5s; /* Safari */
+    transition: width 0.5s;
+}
+
 .stats{
   font-style: italic;
 }

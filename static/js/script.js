@@ -42,28 +42,28 @@ var VEHICLES = [
 	["Magikruiser", "Light", 43, 24, 45, 45, 32, 67, 43,"magikruiser"],
 	["Bubble Bike", "Light", 48, 27, 40, 40, 45, 35, 37,"bubble-bike"],
 	["Standard Kart M", "Medium", 46, 45, 40, 43, 45, 35, 40,"standard-kart-m"],
-	["Classic Dragster", "Medium", 37, 43, 59, 54, 54, 40, 51,"classic-dragster"],
+	["Nostalgia 1", "Medium", 37, 43, 59, 54, 54, 40, 51,"nostalgia-1"],
 	["Wild Wing", "Medium", 57, 51, 21, 29, 59, 24, 59,"wild-wing"],
-	["Super Blooper", "Medium", 50, 40, 35, 37, 21, 54, 35,"super-blooper"],
-	["Daytripper", "Medium", 34, 45, 51, 59, 32, 48, 54,"daytripper"],
-	["Sprinter", "Medium", 64, 48, 27, 24, 37, 21, 24,"sprinter"],
+	["Turbo Blooper", "Medium", 50, 40, 35, 37, 21, 54, 35,"turbo-blooper"],
+	["Royal Racer", "Medium", 34, 45, 51, 59, 32, 48, 54,"royal-racer"],
+	["B Dasher Mk 2", "Medium", 64, 48, 27, 24, 37, 21, 24,"b-dasher-mk-2"],
 	["Standard Bike M", "Medium", 43, 37, 43, 45, 48, 37, 43,"standard-bike-m"],
 	["Mach Bike", "Medium", 55, 37, 24, 32, 62, 27, 62,"mach-bike"],
-	["Sugarscoot", "Medium", 32, 32, 54, 62, 35, 51, 56,"mach-bike"],
-	["Zip Zip", "Medium", 41, 35, 45, 51, 29, 62, 45,"zip-zip"],
-	["Sneakster", "Medium", 62, 40, 29, 27, 40, 24, 27,"sneakster"],
+	["Sugarscoot", "Medium", 32, 32, 54, 62, 35, 51, 56,"bon-bon"],
+	["Rapide", "Medium", 41, 35, 45, 51, 29, 62, 45,"rapide"],
+	["Nitrocycle", "Medium", 62, 40, 29, 27, 40, 24, 27,"nitrocycle"],
 	["Dolphin Dasher", "Medium", 48, 43, 37, 40, 24, 56, 37,"dolphin-dasher"],
 	["Standard Kart L", "Heavy", 48, 59, 37, 40, 40, 35, 35,"standard-kart-l"],
 	["Offroader", "Heavy", 39, 64, 48, 54, 18, 43, 45,"offroader"],
 	["Flame Flyer", "Heavy", 62, 59, 16, 21, 48, 18, 48,"flame-flyer"],
 	["Piranha Prowler", "Heavy", 55, 67, 29, 35, 35, 29, 27,"piranha-prowler"],
-	["Jetsetter", "Heavy", 69, 56, 21, 17, 27, 16, 16,"jetsetter"],
-	["Honey Coupe", "Heavy", 53, 62, 27, 29, 56, 24, 56,"honey-coupe"],
+	["Aero Glider", "Heavy", 69, 56, 21, 17, 27, 16, 16,"aero-glider"],
+	["Dragonetti", "Heavy", 53, 62, 27, 29, 56, 24, 56,"dragonetti"],
 	["Standard Bike L", "Heavy", 46, 54, 40, 43, 43, 37, 37,"standard-bike-l"],
-	["Flame Runner", "Heavy", 60, 54, 18, 24, 51, 21, 51,"flame-runner"],
+	["Bowser Bike", "Heavy", 60, 54, 18, 24, 51, 21, 51,"bowser-bike"],
 	["Wario Bike", "Heavy", 37, 59, 51, 56, 21, 45, 48,"wario-bike"],
-	["Shooting Star", "Heavy", 50, 48, 29, 32, 59, 27, 59,"shooting-star"],
-	["Spear", "Heavy", 67, 56, 24, 18, 29, 18, 18,"spear"],
+	["Twinkle Star", "Heavy", 50, 48, 29, 32, 59, 27, 59,"twinkle-star"],
+	["Torpedo", "Heavy", 67, 56, 24, 18, 29, 18, 18,"torpedo"],
 	["Phantom", "Heavy", 43, 51, 43, 48, 17, 56, 40,"phantom"]
 ];
 
@@ -96,10 +96,10 @@ function getSelectedVehicleA(){
   var characterWeight = character[1];
   switch(characterWeight) {
       case "Heavy":
-          vehicleOffset = 12;
+          vehicleOffset = 24;
           break;
       case "Medium":
-          vehicleOffset = 6;
+          vehicleOffset = 12;
           break;
       default:
           break;
@@ -132,10 +132,10 @@ function getSelectedVehicleB(){
   var characterWeight = character[1];
   switch(characterWeight) {
       case "Heavy":
-          vehicleOffset = 12;
+          vehicleOffset = 24;
           break;
       case "Medium":
-          vehicleOffset = 6;
+          vehicleOffset = 12;
           break;
       default:
           break;
@@ -177,6 +177,10 @@ function updatestats() {
   var vb = getSelectedVehicleB();
 	var	sa, sb;
 
+	document.getElementById("character-a-name").innerHTML = ca[0];
+	document.getElementById("vehicle-a-name").innerHTML = va[0];
+	document.getElementById("character-b-name").innerHTML = cb[0];
+	document.getElementById("vehicle-b-name").innerHTML = vb[0];
 	for(var s=0;s<STATISTICS.length;s++) {
 		document.getElementById(STATISTICS[s]+"-num-a").innerHTML = sa = ca[s+2] + va[s+2];
 		document.getElementById(STATISTICS[s]+"-num-b").innerHTML = sb = cb[s+2] + vb[s+2];
@@ -198,20 +202,20 @@ function updateKarts(){
   var cbWeight = cb[1];
   switch(caWeight) {
       case "Heavy":
-          vaOffset = 12;
+          vaOffset = 24;
           break;
       case "Medium":
-          vaOffset = 6;
+          vaOffset = 12;
           break;
       default:
           break;
   }
-  switch(caWeight) {
+  switch(cbWeight) {
       case "Heavy":
-          vbOffset = 12;
+          vbOffset = 24;
           break;
       case "Medium":
-          vbOffset = 6;
+          vbOffset = 12;
           break;
       default:
           break;
@@ -220,39 +224,10 @@ function updateKarts(){
 	for(var i=0;i<12;i++){
 		var imgA = document.getElementById("vehicle-a-image-"+i);
 		var va = VEHICLES[vaOffset+i];
-		imgA.setAttribute("src","./static/img/vehicles/"+va[9]+"/"+ca[9]+".png");
-		//var imgB = document.getElementById("vehicle-b-image-"+i);
-		//imgB.setAttribute("src","./static/img/"+va[9]+"/"+ca[8]+".png");
+		imgA.setAttribute("src","./static/img/vehicles/"+va[9]+".png");
+		var imgB = document.getElementById("vehicle-b-image-"+i);
+		var vb = VEHICLES[vbOffset+i];
+		imgB.setAttribute("src","./static/img/vehicles/"+vb[9]+".png");
 	}
 
 }
-
-/*
-function updatekarts(c) {
-	var w = characters[document.getElementById("char"+c).value][1],
-		k = document.getElementById("kart"+c), s = k.selectedIndex, i, o;
-	k.options.length = 0;
-	for(i = o = 0; i < karts.length; i++) {
-		if( karts[i][1] == w ) {
-			k.options[o++] = new Option(karts[i][0], i);
-		}
-	}
-	k.selectedIndex = s;
-	updatestats();
-}
-
-window.onload = function() {
-	var a = document.getElementById("chara"), b = document.getElementById("charb"), i;
-	for(i = 0; i < characters.length; i++) {
-		a.options[i] = new Option(characters[i][0], i);
-		b.options[i] = new Option(characters[i][0], i);
-	}
-	a.options[9].selected = true;
-	b.options[10].selected = true;
-	updatekarts("a");
-	updatekarts("b");
-	document.getElementById("karta").selectedIndex = 0;
-	document.getElementById("kartb").selectedIndex = 0;
-	updatestats();
-}
-*/
